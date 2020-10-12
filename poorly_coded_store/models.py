@@ -7,6 +7,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Order(models.Model):
+    product = models.ForeignKey(Product, related_name='orders', on_delete=models.DO_NOTHING)
     quantity_ordered = models.IntegerField()
     total_price = models.DecimalField(decimal_places=2, max_digits=6)
     created_at = models.DateTimeField(auto_now_add=True)
